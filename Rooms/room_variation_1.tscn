@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5mwvr74ivvp"]
+
+[ext_resource type="Texture2D" uid="uid://cvnh42pnoivf6" path="res://test/Floor_1.png" id="1_lyvf6"]
+
+[sub_resource type="GDScript" id="GDScript_2v3j4"]
+resource_name = "room.gd"
+script/source = "extends Node2D
+
+var connected_rooms = {
+	Vector2(0,1): null,
+	Vector2(0,-1): null,
+	Vector2(1,0): null,
+	Vector2(-1,0): null
+}
+
+var number_of_connected_rooms = 0
+"
+
+[node name="room1" type="Node2D"]
+script = SubResource("GDScript_2v3j4")
+
+[node name="Floor1" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_lyvf6")
