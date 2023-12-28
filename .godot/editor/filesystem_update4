@@ -1,0 +1,5 @@
+res://Rooms/room1.tscn
+res://Scripts/dungeon_generation.gd
+res://Rooms/room_variation_1.tscn
+res://dungeon_tester.tscn
+res://Rooms/corridor.tscn
