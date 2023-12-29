@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_jpjhu")
 
 [node name="Upgrade2" type="TextureButton" parent="."]
+z_index = 1
 texture_filter = 1
 layout_mode = 2
 offset_left = 900.0
@@ -28,6 +29,7 @@ scale = Vector2(4, 4)
 texture_normal = SubResource("ImageTexture_lun1m")
 
 [node name="Upgrade1" type="TextureButton" parent="."]
+z_index = 1
 texture_filter = 1
 layout_mode = 2
 offset_left = 525.0
@@ -38,6 +40,7 @@ scale = Vector2(4, 4)
 texture_normal = SubResource("ImageTexture_ldpk5")
 
 [node name="Upgrade0" type="TextureButton" parent="."]
+z_index = 1
 texture_filter = 1
 layout_mode = 2
 offset_left = 150.0
@@ -46,6 +49,13 @@ offset_right = 166.0
 offset_bottom = 272.0
 scale = Vector2(4, 4)
 texture_normal = SubResource("ImageTexture_86n1v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 650.0
+mouse_filter = 2
+color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [connection signal="pressed" from="Upgrade2" to="." method="_on_upgrade_2_pressed"]
 [connection signal="pressed" from="Upgrade1" to="." method="_on_upgrade_1_pressed"]

@@ -2,15 +2,18 @@ extends Control
 
 var healthbuff = 0
 var damagebuff = 0
+var speedbuff = 0
 
-var upgrades = ["health+1", "damage+1"]
+var upgrades = ["health+1", "damage+1", "speed+1"]
 var upgrade_texture = {
 	"health+1": preload("res://Assets/Upgrades/buff_+1_Heart.png"),
-	"damage+1": preload("res://Assets/Upgrades/buff_+1_damage.png")
+	"damage+1": preload("res://Assets/Upgrades/buff_+1_damage.png"),
+	"speed+1": preload("res://Assets/Upgrades/buff_+1_speed.png")
 }
 var upgrade_buff = {
 	"health+1": 1,
-	"damage+1": 1
+	"damage+1": 1,
+	"speed+1": 1
 }
 
 var upgrade_0: String
@@ -48,9 +51,9 @@ func upgrade_2_manager():
 	$Upgrade2.texture_normal = texture
 
 func init_buff_vars():
-	buff_var_0 = healthbuff if upgrade_0 == "health+1" else damagebuff
-	buff_var_1 = healthbuff if upgrade_1 == "health+1" else damagebuff
-	buff_var_2 = healthbuff if upgrade_2 == "health+1" else damagebuff
+	buff_var_0 = healthbuff if upgrade_0 == "health+1" else damagebuff if upgrade_0 == "damage+1" else speedbuff
+	buff_var_1 = healthbuff if upgrade_1 == "health+1" else damagebuff if upgrade_1 == "damage+1" else speedbuff
+	buff_var_2 = healthbuff if upgrade_2 == "health+1" else damagebuff if upgrade_2 == "damage+1" else speedbuff
 
 func _on_upgrade_pressed(upgrade_name: String, upgrade_number: int):
 	var buff_value = upgrade_buff.get(upgrade_name, 0)
@@ -70,7 +73,9 @@ func _on_upgrade_pressed(upgrade_name: String, upgrade_number: int):
 		healthbuff = buffvar
 	elif upgrade_name == "damage+1":
 		damagebuff = buffvar
-
+	elif upgrade_name == "speed+1":
+		speedbuff = buffvar
+	
 	# Update specific buff_var based on upgrade_number
 	match upgrade_number:
 		0: buff_var_0 = buffvar
@@ -84,6 +89,7 @@ func _on_upgrade_pressed(upgrade_name: String, upgrade_number: int):
 	print(upgrade_name, ":", buffvar)
 	print("Health:", healthbuff)
 	print("Damage:", damagebuff)
+	print("Speed:", speedbuff)
 	
 func _on_upgrade_0_pressed():
 	_on_upgrade_pressed(upgrade_0, 0)

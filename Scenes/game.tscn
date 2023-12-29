@@ -50,4 +50,4 @@ script = SubResource("GDScript_2o7ha")
 [node name="MapNode" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(579, 326)
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
