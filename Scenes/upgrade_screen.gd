@@ -87,7 +87,9 @@ func _on_upgrade_pressed(upgrade_name: String, upgrade_number: int):
 	
 func _on_upgrade_0_pressed():
 	_on_upgrade_pressed(upgrade_0, 0)
-
+	await get_tree().create_timer(1).timeout
+	get_tree().quit()
+	
 func _on_upgrade_1_pressed():
 	if upgrade_0 == upgrade_1:
 		upgrade_name = upgrade_0
@@ -97,6 +99,8 @@ func _on_upgrade_1_pressed():
 		upgrade_number = 1
 
 	_on_upgrade_pressed(upgrade_name, upgrade_number)
+	await get_tree().create_timer(1).timeout
+	get_tree().quit()
 
 func _on_upgrade_2_pressed():
 	if upgrade_0 == upgrade_2:
@@ -110,4 +114,5 @@ func _on_upgrade_2_pressed():
 		upgrade_number = 2
 
 	_on_upgrade_pressed(upgrade_name, upgrade_number)
-
+	await get_tree().create_timer(1).timeout
+	get_tree().quit()
