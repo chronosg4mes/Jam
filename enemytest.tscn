@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyge5ii1v0hva"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_eg7h3"]
+[ext_resource type="Texture2D" uid="uid://depijyiubd0py" path="res://icon.svg" id="1_v8n36"]
+[ext_resource type="Script" path="res://Enemy.gd" id="3_dbdnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_useah"]
+size = Vector2(124, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_euanw"]
+size = Vector2(64, 64)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_or0dr"]
+width = 64
+height = 64
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6usd6"]
+vertices = PackedVector2Array(962, 81, 960, 500, 107, 489, 110, 86, 189, 25)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(101, 82, 97, 499, 970, 511, 973, 72, 186, 15)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="Enemytest" type="Node2D"]
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(399, 348)
+script = ExtResource("1_eg7h3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_useah")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture = ExtResource("1_v8n36")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(225, 207)
+script = ExtResource("3_dbdnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_euanw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+texture = SubResource("NoiseTexture2D_or0dr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+z_index = 9
+navigation_polygon = SubResource("NavigationPolygon_6usd6")
