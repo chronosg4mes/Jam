@@ -4,7 +4,8 @@
 script/source = "extends Node2D
 
 var room_var_1 = preload(\"res://Rooms/room_variation_1.tscn\")
-var corridor = preload(\"res://Rooms/corridor.tscn\")
+var corridor_h = preload(\"res://Rooms/corridor_h.tscn\")
+var corridor_v = preload(\"res://Rooms/corridor_v.tscn\")
 
 var dungeon = {}
 var node_sprite = load(\"res://test/map_nodes1.png\")
@@ -25,20 +26,21 @@ func load_map():
 		
 		map_node.add_child(temp)
 		temp.z_index = 0
-		temp.position = i * 100
+		temp.position = i * 960
 		var c_rooms = dungeon.get(i).connected_rooms
 		if(c_rooms.get(Vector2(1, 0)) != null):
-			temp = corridor.instantiate()
+			temp = corridor_h.instantiate()
 			map_node.add_child(temp)
 			temp.z_index = 1
-			temp.position = (i + Vector2(1, 0) / 2) * 100
+			temp.position = (i + Vector2(1, 0) / 2) * 960
 
 		if(c_rooms.get(Vector2(0, 1)) != null):
-			temp = corridor.instantiate()
+			temp = corridor_v.instantiate()
 			map_node.add_child(temp)
 			temp.z_index = 1
 			temp.rotation_degrees = 90
-			temp.position = (i + Vector2(0, 1) / 2) * 100
+			temp.position = (i + Vector2(0, 1) / 2) * 965
+	
 			
 func _on_button_pressed():
 	randomize()
@@ -59,5 +61,6 @@ text = "Generate"
 [node name="MapNode" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(600, 298)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
