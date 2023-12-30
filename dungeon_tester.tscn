@@ -40,7 +40,6 @@ func load_map():
 			temp.z_index = 1
 			temp.rotation_degrees = 90
 			temp.position = (i + Vector2(0, 1) / 2) * 965
-	
 			
 func _on_button_pressed():
 	randomize()
